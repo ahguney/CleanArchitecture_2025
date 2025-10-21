@@ -9,12 +9,12 @@ namespace CleanArchitecture_2025.Domain.Employees
 {
     public class Employee : Entity
     {
-        public string? FirstName { get; set; }
-        public string? LastName { get; set; }
+        public string FirstName { get; set; } = default!;
+        public string LastName { get; set; } = default!;
         public string FullName => string.Join(" ", FirstName, LastName);
         public DateOnly BirthOfDate{ get; set; }
         public decimal Salary { get; set; }
         public Adress? Adress { get; set; }
-        public PersonelInfo? PersonelInfo { get; set; }
+        public PersonelInformation PersonelInfo { get; set; } = default!;
     }
 }
