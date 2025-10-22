@@ -11,7 +11,7 @@ namespace CleanArchitecture_2025.Application
 {
     public static class ApplicationRegistrar
     {
-        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+        public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddMediatR(conf =>
             {

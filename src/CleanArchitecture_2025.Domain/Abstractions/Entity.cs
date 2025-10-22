@@ -15,11 +15,11 @@ namespace CleanArchitecture_2025.Domain.Abstractions
 
         public Guid Id { get; set; }
 
-        public DateTime CreatedAt { get; set; }
+        public DateTimeOffset CreatedAt { get; set; }
 
-        public DateTime UpdatedAt { get; set; }
+        public DateTimeOffset? UpdatedAt { get; set; }
 
-        public DateTime DeletedAt { get; set; }
+        public DateTimeOffset? DeletedAt { get; set; }
 
         public bool IsDeleted { get; set; }
     }

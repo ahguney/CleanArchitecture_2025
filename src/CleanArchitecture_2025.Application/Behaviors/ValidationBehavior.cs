@@ -54,3 +54,4 @@ namespace CleanArchitecture_2025.Application.Behaviors
             return await next();
         }
     }
+}

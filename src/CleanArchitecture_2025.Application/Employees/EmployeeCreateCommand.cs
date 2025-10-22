@@ -28,7 +28,7 @@ namespace CleanArchitecture_2025.Application.Employees
         {
             RuleFor(x => x.FirstName).MinimumLength(3).WithMessage("Ad alanı en az 3 karakter olmalı");
             RuleFor(x => x.LastName).MinimumLength(3).WithMessage("Soyad alanı en az 3 karakter olmalı");
-            RuleFor(x => x.PersonelInformation.TCNo)
+            RuleFor(x => x.PersonelInformation.TCNO)
                 .MinimumLength(11).WithMessage("Geçerli bir Tc numarası yazın")
                 .MaximumLength(11).WithMessage("Geçerli bir Tc numarası yazın");
         }
@@ -41,7 +41,7 @@ namespace CleanArchitecture_2025.Application.Employees
         public async Task<Result<string>> Handle(EmployeeCreateCommand request, CancellationToken cancellationToken)
         {
             var isEmployeeExists = await employeeRepository
-                .AnyAsync(p=>p.PersonelInfo.TCNo == request.PersonelInformation.TCNo,cancellationToken);
+                .AnyAsync(p=>p.PersonelInformation.TCNO == request.PersonelInformation.TCNO,cancellationToken);
 
             if(isEmployeeExists)
             {

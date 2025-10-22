@@ -35,7 +35,7 @@ namespace CleanArchitecture_2025.Application.Employees
                 DeletedAt = s.DeletedAt,
                 Id = s.Id,
                 IsDeleted = s.IsDeleted,
-                TCNo = s.PersonelInfo.TCNo,
+                TCNo = s.PersonelInformation.TCNO,
                 UpdatedAt = s.UpdatedAt
             }).AsQueryable();
 

@@ -1,6 +1,7 @@
 ﻿using CleanArchitecture_2025.Domain.Employees;
 using CleanArchitecture_2025.Infrastructure.Contexts;
 using CleanArchitecture_2025.Infrastructure.Repositories;
+using GenericRepository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,14 +16,16 @@ namespace CleanArchitecture_2025.Infrastructure
 {
     public static class InfrastructureRegistrar
     {
-        public static IServiceCollection RegisterInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<ApplicationDbContext>(opt => {
                 string connectionString = configuration.GetConnectionString("SqlServer")!;
                 opt.UseSqlServer(connectionString);
             });
+            
+            services.AddScoped<IUnitOfWork>(srv => srv.GetRequiredService<ApplicationDbContext>());
 
-            services.AddScoped<IEmployeeRepository,EmployeeRepository>();
+            //services.AddScoped<IEmployeeRepository,EmployeeRepository>();
 
             services.Scan(opt => opt
             .FromAssemblies(typeof(InfrastructureRegistrar).Assembly)
